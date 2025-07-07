@@ -152,8 +152,8 @@ public:
     unsigned WordPos = Curr / BITWORD_SIZE;
     unsigned BitPos = Curr % BITWORD_SIZE;
     BitWord Copy = Bits[WordPos];
-    assert(WordPos <= BITWORDS_PER_ELEMENT
-           && "Word Position outside of element");
+    assert(WordPos < BITWORDS_PER_ELEMENT &&
+           "Word Position outside of element");
 
     // Mask off previous bits.
     Copy &= ~0UL << BitPos;
